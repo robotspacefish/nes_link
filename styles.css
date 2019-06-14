@@ -14,6 +14,10 @@ body {
   align-items: center;
 }
 
+button {
+  cursor: pointer;
+}
+
 .controller-outer {
   width: 660px;
   height: 290px;
