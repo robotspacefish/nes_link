@@ -158,30 +158,35 @@ const upFrames = [
   ]
 ];
 
-const drawUp = () => {
+function drawUp() {
   advanceFrames(upFrames.length);
   loopThroughFrames(upFrames);
 };
 
-const drawRight = () => {
+function drawRight() {
   advanceFrames(rightFrames.length);
   loopThroughFrames(rightFrames);
 };
 
-const drawDown = () => {
+function drawDown() {
   advanceFrames(downFrames.length);
 
   loopThroughFrames(downFrames);
 };
 
-const advanceFrames = (len) => {
+function flipRightToLeft() {
+
+};
+
+
+function advanceFrames(len) {
   frame++;
   if (frame >= len) {
     frame = 0;
   }
 };
 
-const loopThroughFrames = (frames) => {
+function loopThroughFrames(frames) {
   Array.prototype.slice.call(link.children).forEach((box, i) => {
     box.classList.add(i);
     box.style.backgroundColor = colors[frames[frame][i]];
