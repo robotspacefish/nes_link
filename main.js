@@ -1,20 +1,34 @@
 const btns = document.querySelectorAll('button');
 const link = document.getElementById('link');
 let frame = 0;
+let intervalID = null;
 
-btns.forEach(button => {
-  button.addEventListener('click', (e) => {
-    const id = e.target.id;
-    console.log(id);
-  })
-})
-
+// create boxes
 for (let i = 0; i < 256; i++) {
   const box = document.createElement('div');
   box.classList.add('box');
   link.appendChild(box);
 }
 
+btns.forEach(button => {
+  button.addEventListener('click', (e) => {
+    const id = e.target.id;
+    console.log("id:", id);
+    clearInterval(intervalID);
+    switch (id) {
+      case 'right':
+        intervalID = setInterval(drawRight, 300);
+        break;
+      case 'down':
+        intervalID = setInterval(drawDown, 300);
+        break;
+      case 'start':
+        console.log('canceling animation')
+        clearInterval(intervalID);
+    }
+
+  })
+})
 
 const colors = [
   'white',
@@ -62,16 +76,58 @@ const downFrames = [
   ]
 ];
 
+const rightFrames = [
+  [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 2, 2, 3, 3, 3, 3, 0, 0, 0, 0,
+    0, 2, 2, 2, 1, 2, 2, 3, 3, 3, 3, 3, 3, 0, 0, 0,
+    2, 2, 2, 2, 1, 1, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0,
+    2, 0, 2, 2, 1, 1, 1, 3, 1, 1, 2, 1, 0, 0, 0, 0,
+    0, 0, 2, 3, 3, 1, 1, 3, 1, 1, 3, 1, 1, 1, 0, 0,
+    0, 0, 0, 3, 3, 3, 1, 1, 1, 1, 1, 1, 0, 3, 0, 0,
+    0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 1, 1, 0, 3, 0, 0,
+    0, 0, 2, 3, 3, 2, 2, 1, 1, 1, 3, 3, 1, 3, 0, 0,
+    0, 0, 3, 3, 3, 3, 3, 1, 1, 1, 2, 3, 1, 3, 0, 0,
+    0, 2, 3, 3, 3, 3, 3, 1, 1, 2, 2, 3, 0, 3, 0, 0,
+    0, 2, 2, 3, 3, 3, 3, 2, 2, 2, 3, 0, 0, 3, 0, 0,
+    3, 3, 2, 2, 2, 2, 2, 3, 3, 3, 3, 2, 0, 3, 0, 0,
+    3, 3, 3, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 0, 0, 0,
+    0, 3, 3, 3, 0, 0, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0
+  ],
+  [
+    0, 0, 0, 0, 0, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 2, 2, 2, 2, 2, 3, 3, 3, 3, 0, 0, 0, 0,
+    0, 2, 2, 2, 1, 2, 2, 3, 3, 3, 3, 3, 0, 0, 0, 0,
+    2, 2, 2, 2, 1, 1, 3, 3, 3, 3, 3, 3, 0, 0, 0, 0,
+    2, 0, 2, 2, 1, 1, 1, 3, 1, 1, 2, 1, 0, 0, 3, 0,
+    0, 0, 2, 3, 3, 1, 1, 3, 1, 1, 3, 1, 1, 1, 3, 0,
+    0, 0, 0, 3, 3, 3, 1, 1, 1, 1, 1, 1, 0, 0, 3, 0,
+    0, 0, 0, 0, 2, 2, 2, 2, 1, 1, 1, 1, 0, 0, 3, 0,
+    0, 0, 3, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 1, 3, 0,
+    0, 3, 3, 3, 2, 1, 1, 1, 2, 2, 2, 3, 3, 1, 3, 0,
+    0, 3, 3, 3, 3, 1, 1, 1, 2, 2, 2, 3, 3, 0, 3, 0,
+    0, 3, 3, 3, 3, 1, 1, 2, 2, 2, 3, 0, 0, 0, 3, 0,
+    0, 0, 2, 3, 3, 2, 2, 3, 3, 3, 3, 0, 0, 0, 3, 0,
+    0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0
+
+  ]
+];
+
+const drawRight = () => {
+  advanceFrames(rightFrames.length);
+  loopThroughFrames(rightFrames);
+};
+
 const drawDown = () => {
-  // window.requestAnimationFrame(drawDown);
-  let len = downFrames.length;
-  advanceFrames(len);
+  advanceFrames(downFrames.length);
 
   loopThroughFrames(downFrames);
 };
 
 const advanceFrames = (len) => {
-  console.log(frame)
   frame++;
   if (frame >= len) {
     frame = 0;
@@ -85,7 +141,11 @@ const loopThroughFrames = (frames) => {
   })
 }
 
-setInterval(() => {
-  drawDown()
-}, 300)
+const clearBoxes = () => {
+  Array.prototype.slice.call(link.children).forEach((box, i) => {
+    box.style.backgroundColor = 'none';
+  })
+}
 
+// start facing right
+drawRight();
