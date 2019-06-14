@@ -141,11 +141,5 @@ const loopThroughFrames = (frames) => {
   })
 }
 
-const clearBoxes = () => {
-  Array.prototype.slice.call(link.children).forEach((box, i) => {
-    box.style.backgroundColor = 'none';
-  })
-}
-
 // start facing right
 drawRight();
