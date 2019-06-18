@@ -14,7 +14,6 @@
   btns.forEach(button => {
     button.addEventListener('click', (e) => {
       const id = e.target.id;
-      console.log("id:", id);
       clearInterval(intervalID);
       switch (id) {
         case 'right':
@@ -32,6 +31,8 @@
         case 'start':
           console.log('canceling animation')
           clearInterval(intervalID);
+        default:
+          console.log(id, 'is a currently unused button')
       }
 
     })
@@ -185,7 +186,6 @@
     let flipped = [];
     for (let i = 0; i < rowLength * colLength; i += rowLength) {
       const row = original.slice(i, i + rowLength).reverse();
-      console.log(row)
       flipped = flipped.concat(row);
     }
     return flipped;
