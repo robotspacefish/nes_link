@@ -25,6 +25,10 @@ btns.forEach(button => {
       case 'up':
         intervalID = setInterval(drawUp, 300);
         break;
+      case 'left':
+        debugger
+        intervalID = setInterval(drawLeft, 300);
+        break;
       case 'start':
         console.log('canceling animation')
         clearInterval(intervalID);
@@ -115,7 +119,6 @@ const rightFrames = [
     0, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 3, 3, 3, 3, 3, 0, 0, 0, 0, 0, 0, 0
-
   ]
 ];
 
@@ -170,14 +173,23 @@ function drawRight() {
 
 function drawDown() {
   advanceFrames(downFrames.length);
-
   loopThroughFrames(downFrames);
 };
 
-function flipRightToLeft() {
+function drawLeft() {
+  advanceFrames(leftFrames.length);
+  loopThroughFrames(leftFrames);
+}
 
+function flipCharacter(original, rowLength, colLength) {
+  let flipped = [];
+  for (let i = 0; i < rowLength * colLength; i += rowLength) {
+    const row = original.slice(i, i + rowLength).reverse();
+    console.log(row)
+    flipped = flipped.concat(row);
+  }
+  return flipped;
 };
-
 
 function advanceFrames(len) {
   frame++;
@@ -195,3 +207,9 @@ function loopThroughFrames(frames) {
 
 // start facing right
 drawRight();
+
+// create left frames from right frames
+const leftFrames = [
+  flipCharacter(rightFrames[0], 16, 16),
+  flipCharacter(rightFrames[1], 16, 16)
+];
