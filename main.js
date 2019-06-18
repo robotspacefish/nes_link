@@ -26,7 +26,6 @@ btns.forEach(button => {
         intervalID = setInterval(drawUp, 300);
         break;
       case 'left':
-        debugger
         intervalID = setInterval(drawLeft, 300);
         break;
       case 'start':
