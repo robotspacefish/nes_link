@@ -18,54 +18,66 @@
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+
+  <!-- =========== Link ====================== -->
   <div id="link"></div>
-  <div class="controller-outer">
-    <div class="controller-face">
-      <div class="left">
-        <div class="d-pad">
-          <div class="d-pad__empty"></div>
-          <button class="d-pad__dir d-pad__up" id="up"></button>
-          <div class="d-pad__empty"></div>
 
-          <button class="d-pad__dir d-pad__left" id="left"></button>
-          <div class="d-pad__dir d-pad__middle">
-            <div class="d-pad__middle-circle"></div>
-          </div>
-          <button class="d-pad__dir d-pad__right" id="right"></button>
+  <div class="controller-container">
+    <!-- =========== instructions  =================== -->
+    <div id="instructions">
 
-          <div class="d-pad__empty"></div>
-          <button class="d-pad__dir d-pad__down" id="down"></button>
-          <div class="d-pad__empty"></div>
-        </div>
-      </div>
-      <div class="middle">
-        <div class="middle__grey-decor"></div>
-        <div class="middle__grey-decor"></div>
-        <div class="middle__grey-decor start-select-text">
-          <p class="start-select-text__text">SELECT</p>
-          <p class="start-select-text__text">START</p>
-        </div>
-        <div class="middle__grey-decor start-select-buttons">
-          <div class="start-select-buttons__inner">
-            <button class="start-select-buttons__btn" id="select"></button>
-            <button class="start-select-buttons__btn" id="start"></button>
-          </div>
-        </div>
-        <div class="middle__grey-decor"></div>
-      </div>
-      <div class="right">
-        <div class="btn-box">
-          <button class="btn-box__btn" id="b"></button>
-        </div>
-        <div class="btn-box">
-          <button class="btn-box__btn" id="a"></button>
-        </div>
-      </div>
-
-      <p class="btn-label" id="b-label">B</p>
-      <p class="btn-label" id="a-label">A</p>
     </div>
-    <div>
+    <!-- =========== controller ====================== -->
+    <div class="controller-outer">
+      <div class="controller-face">
+        <div class="left">
+          <div class="d-pad">
+            <div class="d-pad__empty"></div>
+            <button class="d-pad__dir d-pad__up" id="up"></button>
+            <div class="d-pad__empty"></div>
+
+            <button class="d-pad__dir d-pad__left" id="left"></button>
+
+            <div class="d-pad__dir d-pad__middle">
+              <div class="d-pad__middle-circle"></div>
+            </div>
+            <button class="d-pad__dir d-pad__right" id="right"></button>
+
+            <div class="d-pad__empty"></div>
+            <button class="d-pad__dir d-pad__down" id="down"></button>
+            <div class="d-pad__empty"></div>
+          </div>
+        </div>
+        <div class="middle">
+          <div class="middle__grey-decor"></div>
+          <div class="middle__grey-decor"></div>
+          <div class="middle__grey-decor start-select-text">
+            <p class="start-select-text__text">SELECT</p>
+            <p class="start-select-text__text">START</p>
+          </div>
+          <div class="middle__grey-decor start-select-buttons">
+            <div class="start-select-buttons__inner">
+              <button class="start-select-buttons__btn" id="select"></button>
+              <button class="start-select-buttons__btn" id="start"></button>
+            </div>
+          </div>
+          <div class="middle__grey-decor"></div>
+        </div>
+
+        <div class="right">
+          <div class="btn-box">
+            <button class="btn-box__btn" id="b"></button>
+          </div>
+          <div class="btn-box">
+            <button class="btn-box__btn" id="a"></button>
+          </div>
+        </div>
+
+        <p class="btn-label" id="b-label">B</p>
+        <p class="btn-label" id="a-label">A</p>
+      </div>
+      <div>
+      </div>
       <script src="main.js" async defer></script>
 </body>
 
